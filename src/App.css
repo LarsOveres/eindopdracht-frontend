@@ -1,0 +1,55 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* FONTS */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Arial', sans-serif;
+  color: #fff;
+}
+
+p,
+a {
+  font-family: 'Segoe UI', sans-serif;
+  color: #fff;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: #B06AF6;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+/* PAGE */
+
+body {
+  background-color: #111526;
+}
+
+.main-container {
+  background-color: #171C31;
+  width: 90%;
+  height: 90%;
+  margin: 2%;
+  padding: 2%;
+  border-radius: 20px;
+}
