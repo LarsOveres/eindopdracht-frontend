@@ -5,7 +5,6 @@ import Tile from "../../components/tile/Tile.jsx";
 function HomePage() {
     return (
         <>
-
             <Link to="/Upload" className="header default-box-settings default-flex">
                 <div>
                     <h1 className="header-text">Nieuwe demo? upload hem snel!<img className="paper-plane"
@@ -14,9 +13,7 @@ function HomePage() {
                                                                                   height="30px"/></h1>
                 </div>
             </Link>
-
             <div className="container">
-
                 <div className=" statistics default-box-settings">
                     <h1>Statistieken</h1>
                     <div className="statistics-wrapper">
@@ -33,33 +30,25 @@ function HomePage() {
                             </div>
                         </div>
                     </div>
-
                 </div>
-
                 <div className="options">
                     <Tile
                         path="/Bibliotheek"
                         text="Reacties"
+                        className="tile-link"
                     />
-
-
-                    {/*<Link to="/Bibliotheek" className="small-options default-box-settings">*/}
-                    {/*    <h1>Berichten</h1>*/}
-                    {/*</Link>*/}
-
-                    <Link to="/Profiel" className="small-options default-box-settings">
-                        <h1>Profiel</h1>
-                    </Link>
-
-                    <Link to="/Bibliotheek" className="big-options default-box-settings">
-
-                        <h1>Naar mijn bibliotheek</h1>
-
-                    </Link>
+                    <Tile
+                        path="/Profiel"
+                        text="Profiel"
+                        className="tile-link"
+                    />
+                    <Tile
+                        path="/Bibliotheek"
+                        text="Naar mijn bibliotheek"
+                        className="big-tile-link"
+                    />
                 </div>
-
             </div>
-
         </>
     )
 }
