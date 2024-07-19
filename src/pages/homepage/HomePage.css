@@ -1,6 +1,4 @@
-.paper-plane {
-    margin-left: 10px;
-}
+/* GENERAL */
 
 .default-box-settings {
     padding: 60px;
@@ -24,6 +22,10 @@ h1 {
 
 .header {
     background-color: #B06AF6;
+}
+
+.paper-plane {
+    margin-left: 10px;
 }
 
 /* MID SECTION */
@@ -68,27 +70,12 @@ h1 {
     justify-content: space-evenly;
 }
 
-.small-options {
-    width: 45%;
-    height: 40%;
-    justify-content: center;
-    display: flex;
-    background-color: #171C31;
-
-}
-
-.big-options {
-    width: 100%;
-    justify-content: center;
-    display: flex;
-    background-color: #171C31;
-}
-
 .options {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     width: 65%;
     flex-wrap: wrap;
+    align-content: space-between;
 }
 
