@@ -1,0 +1,12 @@
+.tile-link {
+    /*padding: 60px;*/
+    border-radius: 40px;
+    align-items: center;
+    background-color: #171C31;
+    width: 45%;
+    height: 40%;
+    justify-content: center;
+    display: flex;
+
+
+}

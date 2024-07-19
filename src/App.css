@@ -20,6 +20,7 @@ p,
 a {
   font-family: 'Segoe UI', sans-serif;
   color: #fff;
+  font-size: 18px;
 }
 
 * {
@@ -39,17 +40,32 @@ a {
   font-size: 20px;
 }
 
-/* PAGE */
+.upload {
+ color: #fff;
+  background: #007bff;
+  padding: 10px 20px;
+  border-radius: 20px;
+}
+
+/* NAV */
+
+.nav-list {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.nav-list li {
+  padding: 0 20px 40px 20px;
+}
+
+/* BODY */
 
 body {
   background-color: #111526;
 }
 
 .main-container {
-  background-color: #171C31;
-  width: 90%;
-  height: 90%;
-  margin: 2%;
-  padding: 2%;
-  border-radius: 20px;
+  margin: 40px 200px;
 }

@@ -1,0 +1,21 @@
+.error-message {
+position: relative;
+    font-size: 20pt;
+}
+
+.error-message span {
+    font-weight: bold;
+
+}
+
+.fault-code {
+    font-size: 1000px;
+    position: fixed;
+    bottom: -320px;
+    left: -100px;
+    color: #171C31;
+}
+
+.scale {
+    width: 100%;
+}
