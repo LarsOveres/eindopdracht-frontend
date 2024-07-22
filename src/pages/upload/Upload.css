@@ -1,0 +1,13 @@
+.upload-container {
+    background: #171C31;
+    border-radius: 40px;
+    width: 50%;
+    display: flex;
+    margin: auto;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.pink-line {
+    color: #B06AF6;
+}
