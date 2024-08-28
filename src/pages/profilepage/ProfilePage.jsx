@@ -51,37 +51,41 @@ function ProfilePage() {
 
                 <p className="pink-line">_______________________</p>
 
-                {/*melding voor bevestiging van wijzigingen toevoegen*/}
-                <div className="input-wrapper shadow">
+                <form /* onSubmit={} */ >
+                    {/*<div className="input-wrapper shadow">*/}
 
-                    <input type="text" className="user-info" value={emailValue} onChange={handleChangeEmail}
-                           disabled={emailDisabled} placeholder="email" /* hier komt automatisch de email te staan *//>
+                        <input type="text" className="user-info" value={emailValue} onChange={handleChangeEmail}
+                               disabled={emailDisabled} placeholder="email"
+                               autoComplete="email" /* hier komt automatisch de email te staan *//>
 
-                    <FontAwesomeIcon className="pencil-icon" icon={faPencil} onClick={changeEmailDisabled}/>
+                        <FontAwesomeIcon className="pencil-icon" icon={faPencil} onClick={changeEmailDisabled}/>
 
-                </div>
+                    {/*</div>*/}
 
-                <div className="input-wrapper shadow">
+                    {/*<div className="input-wrapper shadow">*/}
 
-                    <input type="text" className="user-info" value={passwordValue} onChange={handleChangePassword}
-                           disabled={passwordDisabled} placeholder="wachtwoord" /* hier komt automatisch de email te staan *//>
+                        <input type="text" className="user-info" value={passwordValue} onChange={handleChangePassword}
+                               disabled={passwordDisabled} placeholder="wachtwoord"
+                               autoComplete="password" /* hier komt automatisch het wachtwoord *** te staan *//>
 
-                    <FontAwesomeIcon className="pencil-icon" icon={faPencil} onClick={changePasswordDisabled}/>
+                        <FontAwesomeIcon className="pencil-icon" icon={faPencil} onClick={changePasswordDisabled}/>
 
-                </div>
+                    {/*</div>*/}
 
-                <div className="input-wrapper shadow">
+                    {/*<div className="input-wrapper shadow">*/}
 
-                    <input type="text" className="user-info" value={artistNameValue} onChange={handleChangeArtistname}
-                           disabled={artistNameDisabled} placeholder="Artiestennaam" /* hier komt automatisch de email te staan *//>
+                        <input type="text" className="user-info" value={artistNameValue}
+                               onChange={handleChangeArtistname}
+                               disabled={artistNameDisabled} placeholder="artiestennaam"
+                               autoComplete="artistName" /* hier komt automatisch de artiestennaam te staan *//>
 
-                    <FontAwesomeIcon className="pencil-icon" icon={faPencil} onClick={changeArtistNameDisabled}/>
+                        <FontAwesomeIcon className="pencil-icon" icon={faPencil} onClick={changeArtistNameDisabled}/>
 
-                </div>
-
+                    {/*</div>*/}
+                </form>
             </div>
-        </>
-    )
-}
+            </>
+            )
+            }
 
-export default ProfilePage
+            export default ProfilePage

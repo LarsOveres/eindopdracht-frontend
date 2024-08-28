@@ -27,7 +27,8 @@
 }
 
 .user-info:disabled {
-    color: #b6b6b6;
+    color: #d3d3d3;
+    cursor: not-allowed;
 }
 
 .user-info:focus {
