@@ -1,34 +1,13 @@
 import "./Upload.css"
-import InputField from "../../components/inputfield/InputField.jsx";
-import Button from "../../components/button/Button.jsx";
+import FileUploadForm from "../../components/fileuploadform/FileUploadForm.jsx";
 
 function Upload() {
+
     return (
         <>
-            <div className="upload-container default-box-settings shadow">
-
-                <h1>Upload demo</h1>
-
-                <p className="pink-line">_______________________</p>
-
-                <InputField placeholder="Titel"
-                />
-
-                <InputField placeholder="Artiest"
-                />
-
-                <div>
-                    <p>upload blok</p>
-                </div>
-
-                <InputField placeholder="Notitie"
-                />
-
-                <Button
-                    text="Verstuur"
-                    className="pink"
-                    />
-
+            <div className="profile-container default-box-settings shadow">
+                <h1>Upload een MP3-bestand</h1>
+                <FileUploadForm />
             </div>
         </>
     )

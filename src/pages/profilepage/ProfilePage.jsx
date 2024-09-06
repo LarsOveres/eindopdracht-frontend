@@ -1,46 +1,68 @@
 import "./ProfilePage.css"
-import {useState} from "react";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faPencil} from "@fortawesome/free-solid-svg-icons";
+import {useContext, useEffect, useState} from "react";
+import {AuthContext} from "../../context/AuthContext.jsx";
+import Button from "../../components/button/Button.jsx";
+import {useParams} from "react-router-dom";
 
 
 function ProfilePage() {
 
-    const [emailValue, setEmailValue] = useState("");
+    const {isAuth, user, token} = useContext(AuthContext);
+    console.log("isAuth is: " + isAuth);
+    console.log("user is: ", user);
+    console.log("token info: ", token);
 
-    const handleChangeEmail = (event) => {
-        setEmailValue(event.target.value);
-    };
 
-    const [emailDisabled, setEmailDisabled] = useState(true);
+    // useEffect(() => {
+    //     if (registerResponse) {
+    //         setArtistNameValue(registerResponse.artistName || "");
+    //         setEmailValue(registerResponse.email || "");
+    //     } else if (user) {
+    //         setArtistNameValue(user.artistName || "");
+    //         setEmailValue(user.email || "");
+    //     }
+    // }, [registerResponse, user]);
 
-    const changeEmailDisabled = () => {
-        setEmailDisabled(!emailDisabled);
-    }
-
-    const [passwordValue, setPasswordValue] = useState("");
-
-    const handleChangePassword = (event) => {
-        setPasswordValue(event.target.value);
-    };
-
-    const [passwordDisabled, setPasswordDisabled] = useState(true);
-
-    const changePasswordDisabled = () => {
-        setPasswordDisabled(!passwordDisabled);
-    }
 
     const [artistNameValue, setArtistNameValue] = useState("");
+    // const [artistNameDisabled, setArtistNameDisabled] = useState(true);
+
+    const [emailValue, setEmailValue] = useState("");
+    // const [emailDisabled, setEmailDisabled] = useState(true);
+
+    // const [passwordValue, setPasswordValue] = useState("");
+    // const [passwordDisabled, setPasswordDisabled] = useState(true);
+
+    useEffect(() => {
+        if (isAuth && user) {
+
+        }
+    }, [isAuth, user]);
 
     const handleChangeArtistname = (event) => {
         setArtistNameValue(event.target.value);
     };
 
-    const [artistNameDisabled, setArtistNameDisabled] = useState(true);
+    // const changeArtistNameDisabled = () => {
+    //     setArtistNameDisabled(!artistNameDisabled);
+    // }
 
-    const changeArtistNameDisabled = () => {
-        setArtistNameDisabled(!artistNameDisabled);
-    }
+
+    const handleChangeEmail = (event) => {
+        setEmailValue(event.target.value);
+    };
+
+    // const changeEmailDisabled = () => {
+    //     setEmailDisabled(!emailDisabled);
+    // }
+
+    // const handleChangePassword = (event) => {
+    //     setPasswordValue(event.target.value);
+    // };
+
+    // const changePasswordDisabled = () => {
+    //     setPasswordDisabled(!passwordDisabled);
+    // }
 
 
     return (
@@ -52,40 +74,62 @@ function ProfilePage() {
                 <p className="pink-line">_______________________</p>
 
                 <form /* onSubmit={} */ >
+
+                    <div className="input-wrapper shadow">
+
+                        <input
+                            type="text"
+                            className="user-info"
+                            // value={}
+                            onChange={handleChangeArtistname}
+                            // disabled={artistNameDisabled}
+                            placeholder="artiestennaam"
+                            autoComplete="artistName"
+                        />
+
+                        {/*<FontAwesomeIcon className="pencil-icon" icon={faPencil} onClick={changeArtistNameDisabled}/>*/}
+
+                    </div>
+
+                    <div className="input-wrapper shadow">
+
+                        <input type="text"
+                               className="user-info"
+                               // value={}
+                               onChange={handleChangeEmail}
+                               // disabled={emailDisabled}
+                               placeholder="email"
+                               autoComplete="email"
+                        />
+
+                        {/*<FontAwesomeIcon className="pencil-icon" icon={faPencil} onClick={changeEmailDisabled}/>*/}
+
+                    </div>
+
                     {/*<div className="input-wrapper shadow">*/}
 
-                        <input type="text" className="user-info" value={emailValue} onChange={handleChangeEmail}
-                               disabled={emailDisabled} placeholder="email"
-                               autoComplete="email" /* hier komt automatisch de email te staan *//>
+                    {/*    <input*/}
+                    {/*        type="text"*/}
+                    {/*        className="user-info"*/}
+                    {/*        value={passwordValue}*/}
+                    {/*        onChange={handleChangePassword}*/}
+                    {/*        disabled={passwordDisabled}*/}
+                    {/*        placeholder="wachtwoord"*/}
+                    {/*        autoComplete="password"*/}
+                    {/*    />*/}
 
-                        <FontAwesomeIcon className="pencil-icon" icon={faPencil} onClick={changeEmailDisabled}/>
-
-                    {/*</div>*/}
-
-                    {/*<div className="input-wrapper shadow">*/}
-
-                        <input type="text" className="user-info" value={passwordValue} onChange={handleChangePassword}
-                               disabled={passwordDisabled} placeholder="wachtwoord"
-                               autoComplete="password" /* hier komt automatisch het wachtwoord *** te staan *//>
-
-                        <FontAwesomeIcon className="pencil-icon" icon={faPencil} onClick={changePasswordDisabled}/>
+                    {/*    <FontAwesomeIcon className="pencil-icon" icon={faPencil} onClick={changePasswordDisabled}/>*/}
 
                     {/*</div>*/}
-
-                    {/*<div className="input-wrapper shadow">*/}
-
-                        <input type="text" className="user-info" value={artistNameValue}
-                               onChange={handleChangeArtistname}
-                               disabled={artistNameDisabled} placeholder="artiestennaam"
-                               autoComplete="artistName" /* hier komt automatisch de artiestennaam te staan *//>
-
-                        <FontAwesomeIcon className="pencil-icon" icon={faPencil} onClick={changeArtistNameDisabled}/>
-
-                    {/*</div>*/}
+                    <Button
+                        type="button"
+                        // onClick={changeArtistNameDisabled || changeEmailDisabled}
+                        text="hoi"
+                    />
                 </form>
             </div>
-            </>
-            )
-            }
+        </>
+    )
+}
 
-            export default ProfilePage
+export default ProfilePage
