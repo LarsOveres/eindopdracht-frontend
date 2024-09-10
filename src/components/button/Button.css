@@ -1,0 +1,26 @@
+.pink {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 20px;
+}
+
+.white {
+    background-color: #ffffff;
+    color: #B06AF6;
+    padding: 10px 20px;
+    border-radius: 20px;
+}
+
+.default-button {
+    border: 0;
+}
+
+.pink:active{
+    background-color: #006FFF;
+}
+
+.white:active {
+    background-color: #e1e1e1;
+}
+

@@ -1,0 +1,34 @@
+.signup-container {
+    background-color: #B06AF6;
+    border-radius: 40px;
+    width: 45%;
+}
+
+.flexbox {
+    display: flex;
+    flex-direction: row;
+    background-color: #171C31;
+    border-radius: 40px;
+    /*border: solid 2px red;*/
+}
+
+.login-corners {
+    border-radius: 40px 0 0 40px;
+    width: 60%;
+}
+
+.container-heigth {
+    height: 700px;
+}
+.white-line {
+    color: white;
+}
+
+form {
+    display: flex;
+    flex-direction: row;
+    /*border: 1px solid yellow;*/
+    width: 45%;
+    flex-wrap: wrap;
+    justify-content: center;
+}

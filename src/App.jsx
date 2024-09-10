@@ -22,7 +22,7 @@ function App() {
                         <Route path="/login" element={<LoginPage/>}/>
                         <Route path="/" element={<PrivateRoute element={<HomePage/>}/>}/>
                         <Route path="/Bibliotheek" element={<PrivateRoute element={<Library/>}/>}/>
-                        <Route path="/Profiel" element={<PrivateRoute element={<ProfilePage/>}/>}/>
+                        {/*<Route path="/Profiel" element={<PrivateRoute element={<ProfilePage/>}/>}/>*/}
                         <Route path="/Upload" element={<PrivateRoute element={<Upload/>}/>}/>
                         <Route path="/*" element={<PrivateRoute element={<ErrorPage/>}/>}/>
                     </Routes>
