@@ -1,0 +1,55 @@
+.profile-container {
+    background: #171C31;
+    border-radius: 40px;
+    width: 50%;
+    display: flex;
+    margin: auto;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.input-wrapper {
+    color: white;
+    background: #171C31;
+    border: 1px solid white;
+    border-radius: 8px;
+    padding: 10px;
+    width: 45%;
+    margin: 10px;
+    position: relative;
+    display: flex;
+}
+
+.user-info {
+    color: white;
+    background: #171C31;
+    border: 0;
+}
+
+.user-info:disabled {
+    color: #d3d3d3;
+    cursor: not-allowed;
+}
+
+.user-info:focus {
+    outline: none;
+}
+
+.pink-line {
+    color: #B06AF6;
+}
+
+.pencil-icon {
+    color: white;
+    margin-left: 85%;
+    position: absolute;
+}
+
+.pencil-icon:hover {
+    cursor: pointer;
+}
+
+.pencil-icon:active {
+    color: pink;
+
+}

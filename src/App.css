@@ -16,6 +16,10 @@ h6 {
   color: #fff;
 }
 
+h1 {
+  font-size: 40px;
+}
+
 p,
 a {
   font-family: 'Segoe UI', sans-serif;
@@ -35,14 +39,14 @@ li {
 
 a {
   text-decoration: none;
-  color: #B06AF6;
+  color: #006FFF;
   font-weight: bold;
   font-size: 20px;
 }
 
 .upload {
  color: #fff;
-  background: #007bff;
+  background: #B06AF6;
   padding: 10px 20px;
   border-radius: 20px;
 }
@@ -68,4 +72,8 @@ body {
 
 .main-container {
   margin: 40px 200px;
+}
+
+.shadow {
+  box-shadow: 0 0 5px 2px rgba(0, 0, 0, .2);
 }
