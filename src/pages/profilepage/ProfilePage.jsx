@@ -2,7 +2,6 @@ import "./ProfilePage.css"
 import {useContext, useEffect, useState} from "react";
 import {AuthContext} from "../../context/AuthContext.jsx";
 import Button from "../../components/button/Button.jsx";
-import {useParams} from "react-router-dom";
 
 
 function ProfilePage() {

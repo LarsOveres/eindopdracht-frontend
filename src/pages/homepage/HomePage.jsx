@@ -1,8 +1,36 @@
 import "./HomePage.css"
 import {Link} from "react-router-dom";
 import Tile from "../../components/tile/Tile.jsx";
+import {useEffect, useState} from "react";
+import axios from "axios";
 
-function HomePage() {
+    function HomePage() {
+        const [downloadStats, setDownloadStats] = useState({
+            totalDownloads: 0,
+            totalFiles: 0,
+        });
+
+        const token = localStorage.getItem("token");
+
+        useEffect(() => {
+
+            async function fetchDownloadStats() {
+                try {
+                    const response = await axios.get("http://localhost:8080/files/user-files/download-stats", {
+                        headers: {
+                            Authorization: `Bearer ${token}`, // Zorg ervoor dat je JWT-token wordt meegegeven
+                        }
+                    });
+                    setDownloadStats(response.data);
+                    console.log(response.data);
+                } catch (error) {
+                    console.error("Fout bij het ophalen van statistieken:", error);
+                }
+            }
+
+            fetchDownloadStats();
+        }, []);
+
     return (
         <>
             <Link to="/Upload" className="header default-box-settings default-flex">
@@ -19,13 +47,13 @@ function HomePage() {
                     <div className="statistics-wrapper">
                         <div className="circle default-flex">
                             <div className="circle-text">
-                                <p><span className="listeners">5</span>x</p>
-                                <p>geluisterd</p>
+                                <p><span className="listeners">{downloadStats.totalFiles}</span></p>
+                                <p>uploads</p>
                             </div>
                         </div>
                         <div className="circle default-flex">
                             <div className="circle-text">
-                                <p><span className="listeners">2</span></p>
+                                <p><span className="listeners">{downloadStats.totalDownloads}</span></p>
                                 <p>downloads</p>
                             </div>
                         </div>
@@ -53,4 +81,4 @@ function HomePage() {
     )
 }
 
-export default HomePage
+export default HomePage;

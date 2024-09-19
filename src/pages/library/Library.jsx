@@ -1,45 +1,74 @@
 import "./Library.css"
-import {faMagnifyingGlass} from "@fortawesome/free-solid-svg-icons";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {useState} from "react";
-import button from "../../components/button/Button.jsx";
+import {useEffect, useState} from "react";
+import axios from "axios";
+import {Link} from "react-router-dom";
 
 function Library() {
 
-    // zoekbalk -------------------
-
     const [searchInput, setSearchInput] = useState("");
+    const [files, setFiles] = useState([]);
+
+    const token = localStorage.getItem("token");
+
+    useEffect(() => {
+        // Haal de bestanden op bij het laden van de component
+        const fetchFiles = async () => {
+            try {
+                const response = await axios.get("http://localhost:8080/files/list", {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                });
+                console.log('Fetched Files:', response.data);
+                setFiles(response.data);
+            } catch (error) {
+                console.error("Fout bij het ophalen van de bestanden:", error);
+            }
+        };
+
+        fetchFiles();
+    }, [token]);
 
     const handleSearch = (event) => {
-        setSearchInput(event.target.value);
-    }
+        setSearchInput(event.target.value.toLowerCase());
+    };
 
-    // zoekknop -------------------
-
-    const [clicked, toggleClicked] = useState("");
-
-    const handleClicks = (event) => {
-        toggleClicked(event.target.value);
-        console.log(searchResult);
-    }
-
-    // result naar lowercase ------
-
-    const searchResult = searchInput.trim().toLowerCase();
-
-    // ----------------------------
+    const filteredFiles = files.filter(
+        (file) =>
+            file.fileName.toLowerCase().includes(searchInput) ||
+            file.artistName.toLowerCase().includes(searchInput)
+    );
 
     return (
-        <>
-            <div className="search-container">
-            <input type="text" placeholder="Zoeken" className="search-bar" value={searchInput} onChange={handleSearch} />
-                <button type="button" className="search-button" value={clicked} onClick={handleClicks}>
-            <FontAwesomeIcon icon={faMagnifyingGlass}/>
-                </button>
-            </div>
+        <div className="library-conainer shadow">
 
-        </>
-    )
+            <h1>Geüploade Bestanden</h1>
+
+            <input
+            type="text"
+            placeholder="Zoek op naam of artiest..."
+            value={searchInput}
+            onChange={handleSearch}
+            className="search-bar"
+            />
+
+            {filteredFiles.length > 0 ? (
+                <ul>
+                    {filteredFiles.map((file, index) => (
+                        <li className="file-library" key={index}>
+
+                            <Link to={`/files/${file.id}`}>
+                                {file.fileName} - {file.artistName}
+                            </Link>
+
+                        </li>
+                    ))}
+                </ul>
+            ) : (
+                <p>Er zijn geen bestanden gevonden.</p>
+            )}
+        </div>
+    );
 }
 
 export default Library

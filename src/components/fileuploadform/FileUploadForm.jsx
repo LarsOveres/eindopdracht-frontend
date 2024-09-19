@@ -10,7 +10,7 @@ const FileUploadForm = () => {
     const [file, setFile] = useState(null);
 
     const { user, token } = useContext(AuthContext);
-    // console.log("dit is de user: ", user);
+
 
     const onDrop = (acceptedFiles) => {
         if (acceptedFiles.length > 0) {
@@ -40,7 +40,7 @@ const FileUploadForm = () => {
         }
 
         console.log("bestandstype", file.type);
-        console.log("Gebruikers token:", user.token);
+
 
         const formData = new FormData();
         formData.append('name', name);
@@ -50,6 +50,7 @@ const FileUploadForm = () => {
         formData.append('userId', user.id);
 
         const token = localStorage.getItem('token'); // Zorg dat je token is opgeslagen na login
+        console.log("Gebruikers token:", token);
         const config = {
             headers: {
                 'Authorization': `Bearer ${token}`,
@@ -61,12 +62,7 @@ const FileUploadForm = () => {
 
         try {
             const response = await axios.post('http://localhost:8080/files/upload', formData, config);
-                // , {
-                // headers: {
-                //     'Content-Type': 'multipart/form-data',
-                //     // 'Authorization': `Bearer ${user.token}`,
-                // },
-            // });
+
             if (response.status === 200) {
                 alert('Bestand succesvol geüpload!');
             } else {
