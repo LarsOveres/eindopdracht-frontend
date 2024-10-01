@@ -2,18 +2,8 @@
     border-radius: 40px;
     align-items: center;
     background-color: #171C31;
-    width: 45%;
-    height: 40%;
+    width: 30%;
+    height: 100%;
     justify-content: center;
     display: flex;
-}
-
-.big-tile-link {
-    border-radius: 40px;
-    align-items: center;
-    width: 100%;
-    height: 40%;
-    justify-content: center;
-    display: flex;
-    background-color: #171C31;
 }

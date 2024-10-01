@@ -2,6 +2,7 @@ import {Link, useNavigate} from "react-router-dom";
 import {AuthContext} from "../../context/AuthContext.jsx";
 import { useLocation } from "react-router-dom";
 import {useContext} from "react";
+import "./NavBar.css"
 
 function Navbar() {
 
@@ -10,8 +11,8 @@ function Navbar() {
     const location = useLocation();
 
     const handleLogout = () => {
-        logout(); // Roep de logout functie aan
-        navigate("/login"); // Navigeer naar de loginpagina (optioneel, als je dat wilt)
+        logout();
+        navigate("/login");
     };
 
     const navbarHeight = "84px";

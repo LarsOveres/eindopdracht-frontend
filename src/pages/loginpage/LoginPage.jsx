@@ -20,7 +20,7 @@ function LoginPage() {
 
     async function handleSubmit(e) {
         e.preventDefault();
-        console.log('Inloggegevens:', {loginEmail, loginPassword});
+
         try {
             const response = await axios.post("http://localhost:8080/login", {
                     email: loginEmail,
@@ -33,16 +33,12 @@ function LoginPage() {
                 }
             );
 
-            console.log('Login response:', response); // Log de response
-
             if (response.status === 200 && response.data.token) {
                 login(response.data.token);
             } else {
-                console.error("Onjuiste inloggegevens");
                 setLoginError("Onjuiste inloggegevens. Probeer het opnieuw.");
             }
         } catch (e) {
-            console.error(e);
             setLoginError("Er is iets misgegaan tijdens het inloggen. Probeer het opnieuw.");
         }
     }
@@ -55,8 +51,6 @@ function LoginPage() {
             return;
         }
 
-        console.log("Ingevoerde gegevens: ", { email: registerEmail, artistName: registerArtist, password: registerPassword });
-
         const success = await register(registerEmail, registerArtist, registerPassword);
 
         if (!success) {
@@ -65,8 +59,8 @@ function LoginPage() {
     }
 
     return (
-        <div className="flexbox shadow">
-            <div className="container-heigth upload-container default-box-settings login-corners">
+        <div className="flexbox">
+            <div className="container-heigth login-corners">
                 <h1>Log in</h1>
                 <p className="pink-line">_______________________</p>
 
@@ -75,7 +69,6 @@ function LoginPage() {
                         placeholder="Email"
                         value={loginEmail}
                         onChange={(e) => {
-                            console.log('Email invoer:', e.target.value); // Log de nieuwe waarde
                             setLoginEmail(e.target.value);
                         }}
                     />
@@ -84,7 +77,6 @@ function LoginPage() {
                         type="password"
                         value={loginPassword}
                         onChange={(e) => {
-                            console.log('Wachtwoord invoer:', e.target.value); // Log de nieuwe waarde
                             setLoginPassword(e.target.value);
                         }}
                     />
@@ -98,16 +90,15 @@ function LoginPage() {
 
             </div>
 
-            <div className="container-heigth signup-container default-box-settings upload-container">
+            <div className="container-heigth signup-container">
                 <h1>Meld aan</h1>
-                <p className="white-line">_______________________</p>
+                <p>_______________________</p>
 
                 <form onSubmit={handleRegister}>
                 <InputFieldInverted
                     placeholder="Email"
                     value={registerEmail}
                     onChange={(e) => {
-                        console.log('Email invoer:', e.target.value); // Log de nieuwe waarde
                         setRegisterEmail(e.target.value);
                     }}
                 />
@@ -115,7 +106,6 @@ function LoginPage() {
                     placeholder="Artiest"
                     value={registerArtist}
                     onChange={(e) => {
-                        console.log('Email invoer:', e.target.value); // Log de nieuwe waarde
                         setRegisterArtist(e.target.value);
                     }}
                 />
@@ -124,7 +114,6 @@ function LoginPage() {
                     type="password"
                     value={registerPassword}
                     onChange={(e) => {
-                        console.log('Email invoer:', e.target.value); // Log de nieuwe waarde
                         setRegisterPassword(e.target.value);
                     }}
                 />

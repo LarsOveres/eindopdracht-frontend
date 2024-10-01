@@ -9,7 +9,7 @@ const FileUploadForm = () => {
     const [name, setName] = useState('');
     const [file, setFile] = useState(null);
 
-    const { user, token } = useContext(AuthContext);
+    const { user } = useContext(AuthContext);
 
 
     const onDrop = (acceptedFiles) => {
@@ -75,20 +75,18 @@ const FileUploadForm = () => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <div className="flexbox">
-                <input
-                    type="text"
-                    id="name"
-                    value={name}
-                    placeholder="Titel"
-                    onChange={(e) => setName(e.target.value)}
-                    required
-                />
-            </div>
+        <form className="form-container" onSubmit={handleSubmit}>
+            <input
+                type="text"
+                id="name"
+                value={name}
+                placeholder="Titel"
+                onChange={(e) => setName(e.target.value)}
+                required
+            />
 
             <div className="file-container"
-                {...getRootProps()}
+                 {...getRootProps()}
             >
                 <input {...getInputProps()} />
                 {file ? (
@@ -96,11 +94,10 @@ const FileUploadForm = () => {
                 ) : isDragActive ? (
                     <p className="file-drop-text">Laat het bestand hier vallen...</p>
                 ) : (
-                    <p className="file-drop-text">Sleep en laat een MP3-bestand hier vallen, of klik om te selecteren</p>
+                    <p className="file-drop-text">Sleep en laat een MP3-bestand hier vallen, of klik om te
+                        selecteren</p>
                 )}
             </div>
-
-
 
             <Button
                 text="Uploaden"

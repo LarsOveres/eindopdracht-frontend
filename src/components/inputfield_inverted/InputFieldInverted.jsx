@@ -1,14 +1,6 @@
 import "./InputFieldInverted.css"
-import {useState} from "react";
-
 
 function InputFieldInverted(props) {
-
-    // const [inputValue, setInputValue] = useState("");
-    //
-    // const handleChange = (event) => {
-    //     setInputValue(event.target.value);
-    // };
 
     return (
         <>

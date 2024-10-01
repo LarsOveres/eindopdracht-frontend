@@ -11,7 +11,6 @@ function Library() {
     const token = localStorage.getItem("token");
 
     useEffect(() => {
-        // Haal de bestanden op bij het laden van de component
         const fetchFiles = async () => {
             try {
                 const response = await axios.get("http://localhost:8080/files/list", {
@@ -40,7 +39,7 @@ function Library() {
     );
 
     return (
-        <div className="library-conainer shadow">
+        <div className="library-conainer">
 
             <h1>Geüploade Bestanden</h1>
 

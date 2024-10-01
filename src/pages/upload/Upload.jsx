@@ -5,9 +5,9 @@ function Upload() {
 
     return (
         <>
-            <div className="profile-container default-box-settings shadow">
+            <div className="flexbox-upload">
                 <h1>Upload een MP3-bestand</h1>
-                <FileUploadForm />
+                <FileUploadForm/>
             </div>
         </>
     )

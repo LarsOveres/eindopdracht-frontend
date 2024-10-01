@@ -1,13 +1,15 @@
 import "./DemoPage.css"
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import {useEffect, useState} from "react";
+import {useParams} from "react-router-dom";
 import axios from "axios";
 import CommentForm from "../../components/commentform/CommentForm.jsx";
+import "./DemoPage.css"
+import Button from "../../components/button/Button.jsx";
 
 function DemoPage() {
-    const { id } = useParams();
+    const {id} = useParams();
     const [fileDetails, setFileDetails] = useState(null);
-    const [audioSrc, setAudioSrc] = useState(null); // Nieuw: opslaan van de audio src
+    const [audioSrc, setAudioSrc] = useState(null);
     const [comments, setComments] = useState([]);
     const [userRole, setUserRole] = useState(null);
     const token = localStorage.getItem("token");
@@ -106,22 +108,19 @@ function DemoPage() {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },
-                responseType: 'blob', // Belangrijk: geef aan dat je een blob verwacht
+                responseType: 'blob',
             });
 
-            // Gebruik de bestandsnaam uit fileDetails
             const fileName = fileDetails.fileName + ".mp3";
 
-            // Maak een tijdelijke URL voor de blob
             const url = window.URL.createObjectURL(new Blob([response.data]));
             const a = document.createElement("a");
             a.href = url;
-            a.download = fileName; // Gebruik de bestandsnaam voor de download
+            a.download = fileName;
             document.body.appendChild(a);
             a.click();
             a.remove();
 
-            // Reinig de tijdelijke URL
             window.URL.revokeObjectURL(url);
         } catch (error) {
             console.error("Fout bij het ophalen van het bestand voor download:", error);
@@ -132,7 +131,7 @@ function DemoPage() {
         try {
             await axios.post(
                 `http://localhost:8080/files/${id}/comment`,
-                { content: commentContent }, // Stuur nu de content als object
+                {content: commentContent},
                 {
                     headers: {
                         Authorization: `Bearer ${token}`,
@@ -140,7 +139,7 @@ function DemoPage() {
                     },
                 }
             );
-            // Comments opnieuw ophalen na het toevoegen
+
             const commentsResponse = await axios.get(`http://localhost:8080/files/${id}/comments`, {
                 headers: {
                     Authorization: `Bearer ${token}`,
@@ -156,41 +155,52 @@ function DemoPage() {
         return <p>Bestand details worden geladen...</p>;
     }
 
-    console.log(fileDetails)
-    console.log(fileDetails.playCount)
-
     return (
-        <div className="file-details-container">
-            <h1>Bestandsdetails</h1>
-            <p><strong>Bestandsnaam:</strong> {fileDetails.fileName}</p>
-            <p><strong>Artiest:</strong> {fileDetails.artistName}</p>
-            <p><strong>Aantal keer bekeken:</strong> {fileDetails.playCount}</p>
+        <div className="demo-container">
+            <div className="demo-left-container">
+                <div className="demo-info-container">
+                    <h1>{fileDetails.fileName}</h1>
 
-            {audioSrc && (
-                <audio controls>
-                    <source src={audioSrc} type="audio/mpeg"/>
-                    Your browser does not support the audio element.
-                </audio>
-            )}
-            <button onClick={handleDownload}>Download MP3</button>
-            <h2>Comments</h2>
+                    <p>{fileDetails.artistName}</p>
+                    <br/><br/>
+                    <p><i>{fileDetails.playCount}x bekeken</i></p>
+                </div>
+                <div className="demo-playback-container">
+                    {audioSrc && (
+                        <audio controls>
+                            <source src={audioSrc} type="audio/mpeg"/>
+                            Your browser does not support the audio element.
+                        </audio>
+                    )}
+                    <Button
+                        onClick={handleDownload}
+                        className="download-demo-button"
+                        text="Download"
+                    />
 
-            {userRole === 'ADMIN' && (
-                <CommentForm id={id} onCommentSubmit={handleCommentSubmit} userRole={userRole}
-                             artistName={fileDetails.artistName}/>
-            )}
-            {comments.length > 0 ? (
-                <ul>
-                    {comments.map(comment => (
-                        <li key={comment.id}>
-                            <p><strong>{comment.userName || "Onbekende artiest"}:</strong></p>
-                            <p>{comment.content}</p>
-                        </li>
-                    ))}
-                </ul>
-            ) : (
-                <p>Geen comments gevonden.</p>
-            )}
+                </div>
+            </div>
+            <div className="comment-container">
+
+                <h2>Comments</h2>
+
+                {userRole === 'ADMIN' && (
+                    <CommentForm id={id} onCommentSubmit={handleCommentSubmit} userRole={userRole}
+                                 artistName={fileDetails.artistName}/>
+                )}
+                {comments.length > 0 ? (
+                    <ul>
+                        {comments.map(comment => (
+                            <li key={comment.id}>
+                                <p><strong>{comment.userName || "Onbekende artiest"}:</strong> {comment.content}</p>
+
+                            </li>
+                        ))}
+                    </ul>
+                ) : (
+                    <p>Geen comments gevonden.</p>
+                )}
+            </div>
         </div>
     );
 }

@@ -1,14 +1,12 @@
-.upload-container {
-    background: #171C31;
-    border-radius: 40px;
-    width: 75%;
+.flexbox-upload {
     display: flex;
     margin: auto;
-    justify-content: center;
     flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    background-color: #171C31;
+    border-radius: 40px;
+    width: 100%;
     padding: 50px;
-}
-
-.pink-line {
-    color: #B06AF6;
+    min-height: 500px;
 }

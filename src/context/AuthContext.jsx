@@ -14,26 +14,23 @@ function AuthContextProvider({children}) {
     const [auth, setAuth] = useState({
         isAuth: false,
         user: null,
-        isLoading: true, // Voegt een loading state toe om te voorkomen dat de routes te snel laden
+        isLoading: true,
     });
     const navigate = useNavigate();
     const location = useLocation();
 
     useEffect(() => {
-        // Controleer of er een token in localStorage is bij het laden van de pagina
+
         const token = localStorage.getItem("token");
         if (token) {
             try {
                 const decodedToken = jwtDecode(token);
                 const currentTime = Date.now() / 1000;
 
-                console.log("Dit is de decoded token: ", decodedToken);
-
-                // Controleer of de token is verlopen
                 if (decodedToken.exp < currentTime) {
                     logout();
                 } else {
-                    // Token is nog steeds geldig, haal de gebruikersgegevens op
+
                     axios.get(`http://localhost:8080/users/${decodedToken.sub}`, {
                         headers: {
                             "Authorization": `Bearer ${token}`,
@@ -48,7 +45,7 @@ function AuthContextProvider({children}) {
                                 id: response.data.id,
                                 artistName: response.data.artistName,
                             },
-                            isLoading: false, // Zet isLoading op false na het ophalen van de gegevens
+                            isLoading: false,
                         });
                     }).catch(() => {
                         setAuth({
@@ -88,7 +85,7 @@ function AuthContextProvider({children}) {
                 },
                 withCredentials: true,
             });
-            console.log("API response data:", response.data);
+
             setAuth({
                 isAuth: true,
                 user: {
@@ -112,7 +109,6 @@ function AuthContextProvider({children}) {
     }
 
     async function register(email, artistName, password) {
-        console.log("Ingevoerde gegevens register:", {email, artistName, password});
 
         if (!isValidEmail(email)) {
             alert("Voer een geldig e-mailadres in.");
@@ -136,7 +132,6 @@ function AuthContextProvider({children}) {
             });
 
             if (registerResponse.status === 201) {
-                console.log("Registratie succesvol backend:", registerResponse.data);
 
                 const loginResponse = await axios.post("http://localhost:8080/login", {
                     email: email,
@@ -148,7 +143,7 @@ function AuthContextProvider({children}) {
                 });
 
                 if (loginResponse.status === 200) {
-                    console.log("Inloggen succesvol:", loginResponse.data);
+
                     await login(loginResponse.data.token);
                     return true;
                 } else {

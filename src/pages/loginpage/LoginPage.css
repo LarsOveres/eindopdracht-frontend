@@ -1,7 +1,11 @@
-.signup-container {
-    background-color: #B06AF6;
-    border-radius: 40px;
-    width: 45%;
+/* HELE PAGINA */
+
+.container-heigth {
+    height: 700px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .flexbox {
@@ -9,26 +13,31 @@
     flex-direction: row;
     background-color: #171C31;
     border-radius: 40px;
-    /*border: solid 2px red;*/
 }
+
+form {
+    display: flex;
+    flex-direction: row;
+    width: 400px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* INLOGGEN */
 
 .login-corners {
     border-radius: 40px 0 0 40px;
     width: 60%;
 }
 
-.container-heigth {
-    height: 700px;
-}
-.white-line {
-    color: white;
+.pink-line {
+    color: #B06AF6;
 }
 
-form {
-    display: flex;
-    flex-direction: row;
-    /*border: 1px solid yellow;*/
+/* REGISTREREN */
+
+.signup-container {
+    background-color: #B06AF6;
+    border-radius: 40px;
     width: 45%;
-    flex-wrap: wrap;
-    justify-content: center;
 }
