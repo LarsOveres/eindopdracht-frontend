@@ -18,7 +18,6 @@ function Library() {
                         Authorization: `Bearer ${token}`
                     }
                 });
-                console.log('Fetched Files:', response.data);
                 setFiles(response.data);
             } catch (error) {
                 console.error("Fout bij het ophalen van de bestanden:", error);

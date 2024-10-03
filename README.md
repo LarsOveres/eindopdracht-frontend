@@ -88,13 +88,13 @@ De applicatie maakt gebruik van JWT-token authenticatie. Na het inloggen wordt e
 
 ### De applicatie communiceert met de Spring Boot backend via verschillende API-endpoints. Hier zijn enkele belangrijke:
 
-`/files/upload:` Upload MP3-bestanden.
+`POST /files/upload` Upload een MP3-bestand.
 
-`/files/play/{id}:` Haalt een MP3-bestand op voor afspelen.
+`GET /files/{id}` Mp3 bestand opvragen.
 
-`/files/playcount/{id}:` Verhoogt het afspeelteller voor een bestand.
+`POST /files/{id}/comment` Plaats een opmerking bij een MP3-bestand (admin-only).
 
-`/comments/{fileId}:` Haalt opmerkingen op voor een bepaald bestand.
+`GET /files/{id}/comments` Haal alle opmerkingen bij een MP3-bestand op.
 
 # Voorbeeld API-verzoek
 

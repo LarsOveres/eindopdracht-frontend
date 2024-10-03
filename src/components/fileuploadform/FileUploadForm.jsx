@@ -39,9 +39,6 @@ const FileUploadForm = () => {
             return;
         }
 
-        console.log("bestandstype", file.type);
-
-
         const formData = new FormData();
         formData.append('name', name);
         formData.append('file', file);
@@ -49,16 +46,13 @@ const FileUploadForm = () => {
         formData.append('size', file.size);
         formData.append('userId', user.id);
 
-        const token = localStorage.getItem('token'); // Zorg dat je token is opgeslagen na login
-        console.log("Gebruikers token:", token);
+        const token = localStorage.getItem('token');
         const config = {
             headers: {
                 'Authorization': `Bearer ${token}`,
                 'Content-Type': 'multipart/form-data'
             }
         };
-
-        console.log(config);
 
         try {
             const response = await axios.post('http://localhost:8080/files/upload', formData, config);

@@ -91,7 +91,6 @@ function DemoPage() {
                         Authorization: `Bearer ${token}`,
                     },
                 });
-                console.log(response.data.roleName)
                 setUserRole(response.data.roleName);
             } catch (error) {
                 console.error("Fout bij het ophalen van de gebruikersrol:", error);
