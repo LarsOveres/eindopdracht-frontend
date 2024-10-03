@@ -21,7 +21,7 @@ function CommentForm({ onCommentSubmit, userRole, artistName }) {
 
 
 
-    if (userRole !== 'ADMIN') {
+    if (userRole !== 'ROLE_ADMIN') {
         return null;
     }
 

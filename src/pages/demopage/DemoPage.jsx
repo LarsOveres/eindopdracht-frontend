@@ -184,7 +184,7 @@ function DemoPage() {
 
                 <h2>Comments</h2>
 
-                {userRole === 'ADMIN' && (
+                {userRole === 'ROLE_ADMIN' && (
                     <CommentForm id={id} onCommentSubmit={handleCommentSubmit} userRole={userRole}
                                  artistName={fileDetails.artistName}/>
                 )}
