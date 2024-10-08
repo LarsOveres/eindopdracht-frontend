@@ -39,6 +39,12 @@
     height: 55px;
 }
 
+.delete-demo-button {
+    border-radius: 10px;
+    margin-left: 20px;
+    background-color: red;
+}
+
 .comment-container {
     max-width: 33%;
 }

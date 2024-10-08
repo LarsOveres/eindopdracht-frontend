@@ -5,6 +5,7 @@ import axios from "axios";
 import CommentForm from "../../components/commentform/CommentForm.jsx";
 import "./DemoPage.css"
 import Button from "../../components/button/Button.jsx";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 function DemoPage() {
     const {id} = useParams();
@@ -102,7 +103,6 @@ function DemoPage() {
 
     const handleDownload = async () => {
         try {
-            // Vraag het bestand op als blob met axios
             const response = await axios.get(`http://localhost:8080/files/download/${id}`, {
                 headers: {
                     Authorization: `Bearer ${token}`,
@@ -150,6 +150,25 @@ function DemoPage() {
         }
     };
 
+    const handleDelete = async (id) => {
+        try {
+            const response = await axios.delete(`http://localhost:8080/files/delete/${id}`, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                }
+            });
+
+            if (response.status === 200) {
+                alert("Bestand succesvol verwijderd.");
+            } else {
+                alert("Er is iets mis gegaan bij het verwijderen van het bestand.")
+            }
+        } catch (error) {
+            console.error("Fout bij het verwijderen van het bestand: ", error);
+            alert("Er is een fout opgetreden bij het verwijderen.")
+        }
+    };
+
     if (!fileDetails) {
         return <p>Bestand details worden geladen...</p>;
     }
@@ -176,6 +195,13 @@ function DemoPage() {
                         className="download-demo-button"
                         text="Download"
                     />
+                    {userRole === "ROLE_ADMIN" && (
+                        <Button
+                            onClick={handleDelete}
+                            className="download-demo-button delete-demo-button"
+                            text="Verwijderen"
+                        />
+                    )}
 
                 </div>
             </div>
@@ -183,7 +209,7 @@ function DemoPage() {
 
                 <h2>Comments</h2>
 
-                {userRole === 'ROLE_ADMIN' && (
+                {userRole === "ROLE_ADMIN" && (
                     <CommentForm id={id} onCommentSubmit={handleCommentSubmit} userRole={userRole}
                                  artistName={fileDetails.artistName}/>
                 )}
